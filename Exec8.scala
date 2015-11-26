@@ -49,12 +49,9 @@ abstract class Item {
 class SimpleItem(val price: Double, val description: String) extends Item {}
 class Bundle extends Item {
   val items: ArrayBuffer[Item] = new ArrayBuffer[Item]
-  override def price = items.aggregate(0.0)((p, item) => p + item.price, _ + _)
+  override def price = items.foldLeft(0.0)((p, item) => p + item.price)
   override def description = {
-    val descs = items.aggregate("")(
-        (desc, item) => desc + {if (desc.length != 0) "\n" else ""} + item.description, 
-        (desc1, desc2) => 
-          desc1 + {if (desc1.length != 0 || desc2.length != 0) "\n" else ""} + desc2)
+    val descs = items.foldLeft("")((desc, item) => desc + "\n" + item.description)
     "A bundle which contains " + items.length + " Items. Including:[ \n" + descs + "\n]"
   }
   
