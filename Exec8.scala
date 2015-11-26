@@ -86,7 +86,5 @@ object Exec8 extends App {
   println(bundle2.description)
   
   val p = new LabeledPoint("Black Friday", 12, -8);
-  println(p.x, p.y, p.label)
-  
-  
+  println(p.x, p.y, p.label)  
 }
