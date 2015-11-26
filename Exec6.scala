@@ -1,3 +1,5 @@
+import java.awt.Color
+
 // 1
 object Conversions {
   def inchesToCentimeter(inches: Double) = inches * 2.54
@@ -6,12 +8,10 @@ object Conversions {
 }
 
 // 2
-trait UnitConversion {
-  def convert(num: Double): Double
+class UnitConversion(val factor: Double) {
+  def convert(num: Double): Double = factor * num
 }
-object InchesToCentimeter extends UnitConversion {
-  def convert(num: Double) = num * 2.54
-}
+object InchesToCentimeter extends UnitConversion(2.54)
 
 // 4
 class Point(var x: Int, var y: Int) {}
@@ -49,5 +49,9 @@ object Exec6 extends App {
   println(CardSuit.withName("♦"))
   println(CardSuit.values)
   
+  // 7
+  def isCardSuitRed(suit: CardSuit.Value) = 
+    (suit == CardSuit.Diamond || suit == CardSuit.Heart)
+  println(isCardSuitRed(CardSuit.Club))
   
 }
