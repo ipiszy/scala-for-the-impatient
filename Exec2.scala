@@ -3,19 +3,19 @@ object Exec2 extends App {
   val ipiszy = if (true) "super" else "sbb"
   println(ipiszy)
   val sbb = if (false) "super"
-  println(sbb.getClass())
+  println(sbb.getClass)
   println(sbb.isInstanceOf[Unit])
   val void = Unit
-  println(void.getClass())
+  println(void.getClass)
   val num = if (false) 34
-  println(num.getClass())
+  println(num.getClass)
   var x = args(0).toInt
   val mix = if (x > 0) 21 else "ipiszy"
   println(mix.isInstanceOf[Int])
   println(mix.isInstanceOf[String])
   val javaInt = new Integer(0)
   val none = {}
-  println(none.getClass(), none, none.isInstanceOf[Unit])
+  println(none.getClass, none, none.isInstanceOf[Unit])
   def signum(num: Int) = if (num > 0) 1 else 0
   println(signum(34))
   var y = 2
@@ -47,11 +47,11 @@ object Exec2 extends App {
   println(productOfUnicodes("ipiszy is a super girl."))
   
   var product: BigInt = 1
-  "add is sbb".foreach { product *= _ }
+  "add is sbb".foreach { product *= _.toInt }
   println(product)
   
   def productR(s: String): BigInt = {
-    if (s.size == 0) 1
+    if (s.isEmpty) 1
     else s.head.toInt * productR(s.tail)
   }
   
